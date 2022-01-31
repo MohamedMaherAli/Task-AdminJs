@@ -62,6 +62,7 @@ const adminJs = new AdminJS({
     }, {
         resource: Ticket,
         options: {
+            listProperties: ['title', 'status', 'notes'],
             properties: {
                 customerId: {
                     isVisible: {
@@ -78,7 +79,8 @@ const adminJs = new AdminJS({
                         request.payload = {
                             ...request.payload,
                             customerId: currentAdmin._id,
-                            status: 'active'
+                            status: 'active',
+                            commentedBy: currentAdmin._id
                         }
                         return request;
                     },
